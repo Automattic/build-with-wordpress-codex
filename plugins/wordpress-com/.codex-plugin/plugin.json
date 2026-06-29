@@ -40,6 +40,9 @@
       "Write"
     ],
     "websiteURL": "https://developer.wordpress.com/",
+    "brandColor": "#3858E9",
+    "composerIcon": "./assets/wordpress-dotcom.png",
+    "logo": "./assets/wordpress-dotcom.png",
     "defaultPrompt": [
       "Help me choose local Studio or live WordPress.com for this task.",
       "Build a local WordPress Studio site from this brief.",
