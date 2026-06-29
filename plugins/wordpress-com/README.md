@@ -26,3 +26,8 @@ It ships the shared skills from this repo so all supported surfaces stay aligned
 - `studio`
 - `theme-creator`
 - `wordpress-creator`
+
+## Review artifacts
+
+- `review/chatgpt-app-submission.json` contains the ChatGPT app submission-style metadata, tool hint justifications, positive test cases, and negative test cases for review.
+- `tool-manifest.json` is a source-derived manifest of the tools exposed by the WordPress.com ChatGPT MCP server. It documents how the exposed tool list was derived, but the live MCP `tools/list` response remains the runtime source of truth.

@@ -1,0 +1,320 @@
+{
+    "$schema": "https://developers.openai.com/apps-sdk/schemas/chatgpt-app-submission.v1.json",
+    "schema_version": 1,
+    "app_info": {
+        "display_name": "WordPress.com",
+        "subtitle": "Manage WordPress sites",
+        "description": "WordPress.com helps users find their sites, manage content, update site structure, configure collaborators, plugins, domains, and DNS, and start AI-assisted site builds through ChatGPT.",
+        "category": "PRODUCTIVITY"
+    },
+    "tools": {
+        "wpcom-user-sites": {
+            "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Only lists sites accessible to the authenticated user and does not change site or account data.",
+                "open_world_justification": "Does not publish content, send messages, or change public internet state.",
+                "destructive_justification": "Does not delete, overwrite, revoke access, or perform irreversible actions."
+            }
+        },
+        "wpcom-mcp-ai-agent-sites-list": {
+            "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": true,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Only finds sites that opted in to AI Agent Access and returns matching site metadata.",
+                "open_world_justification": "May query across WordPress.com and Jetpack-connected sites rather than only a single local workspace.",
+                "destructive_justification": "Does not delete, overwrite, revoke access, or perform irreversible actions."
+            }
+        },
+        "wpcom-domain-update-dns-records": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false,
+                "destructiveHint": true
+            },
+            "justifications": {
+                "read_only_justification": "Can add or remove DNS records for a custom domain, so it modifies domain configuration.",
+                "open_world_justification": "Changes are limited to domain configuration managed inside the user's WordPress.com account.",
+                "destructive_justification": "Can remove or overwrite DNS records, which can break site, mail, or verification routing."
+            }
+        },
+        "wpcom-domain-restore-default-dns-records": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false,
+                "destructiveHint": true
+            },
+            "justifications": {
+                "read_only_justification": "Can restore WordPress.com default DNS records, so it modifies domain configuration.",
+                "open_world_justification": "Changes are limited to domain configuration managed inside the user's WordPress.com account.",
+                "destructive_justification": "Can overwrite existing DNS records with defaults, which can disrupt current domain behavior."
+            }
+        },
+        "wpcom-domain-update-nameservers": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false,
+                "destructiveHint": true
+            },
+            "justifications": {
+                "read_only_justification": "Can replace the nameservers for a custom domain, so it modifies domain configuration.",
+                "open_world_justification": "Changes are limited to domain configuration managed inside the user's WordPress.com account.",
+                "destructive_justification": "Can redirect domain authority to different nameservers, which can make site or email records stop resolving."
+            }
+        },
+        "wpcom-domain-set-mail-service": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false,
+                "destructiveHint": true
+            },
+            "justifications": {
+                "read_only_justification": "Can configure DNS records for an external mail provider, so it modifies domain configuration.",
+                "open_world_justification": "Changes are limited to domain configuration managed inside the user's WordPress.com account.",
+                "destructive_justification": "Can change mail routing records, which can disrupt email delivery for the domain."
+            }
+        },
+        "wpcom-mcp-user-management": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": true,
+                "destructiveHint": true
+            },
+            "justifications": {
+                "read_only_justification": "Can invite users, change roles, resend invites, cancel invites, or remove access, so it modifies collaboration state.",
+                "open_world_justification": "Can send invitations and affect access for people outside the current ChatGPT session.",
+                "destructive_justification": "Can remove collaborator access or change roles, which can revoke or reduce permissions."
+            }
+        },
+        "wpcom-mcp-plugin-management": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": true,
+                "destructiveHint": true
+            },
+            "justifications": {
+                "read_only_justification": "Can install, activate, deactivate, update, and uninstall plugins, so it modifies site state.",
+                "open_world_justification": "Plugin lifecycle changes can affect a live WordPress.com site visible to visitors.",
+                "destructive_justification": "Can deactivate or uninstall plugins, which can remove functionality or break site behavior."
+            }
+        },
+        "wpcom-mcp-content-authoring": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": true,
+                "destructiveHint": true
+            },
+            "justifications": {
+                "read_only_justification": "Can create, edit, publish, organize, and moderate site content, so it modifies content state.",
+                "open_world_justification": "Can publish or change posts, pages, media, comments, categories, tags, and patterns on live sites.",
+                "destructive_justification": "Can delete or overwrite content and taxonomy data through write operations."
+            }
+        },
+        "wpcom-mcp-site-editor-context": {
+            "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Only retrieves theme, preset, style, and block availability context for a site.",
+                "open_world_justification": "Does not publish content, send messages, or change public internet state.",
+                "destructive_justification": "Does not delete, overwrite, revoke access, or perform irreversible actions."
+            }
+        },
+        "wpcom-mcp-site-editing": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": true,
+                "destructiveHint": true
+            },
+            "justifications": {
+                "read_only_justification": "Can modify templates, template parts, navigation menus, global styles, and themes, so it changes site structure.",
+                "open_world_justification": "Can change site-wide structure and styling that live site visitors may see.",
+                "destructive_justification": "Can overwrite templates, navigation, global styles, or theme state in ways that affect the whole site."
+            }
+        },
+        "wpcom-mcp-account": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Supports account read and write operations for profile, notifications, subscriptions, connections, domains, and security.",
+                "open_world_justification": "Operations are scoped to the authenticated user's WordPress.com account rather than publishing public content or messages.",
+                "destructive_justification": "Does not advertise delete, revoke, or irreversible account actions in the tool description."
+            }
+        },
+        "wpcom-mcp-site": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Supports read and write operations for a WordPress.com site, including settings, plugins, users, and activity data.",
+                "open_world_justification": "Operations are scoped to the selected WordPress.com site rather than arbitrary external systems.",
+                "destructive_justification": "Does not advertise delete, uninstall, revoke, or irreversible site actions in the facade description."
+            }
+        },
+        "wpcom-mcp-site-builder": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": true,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Can start an AI site-building workflow from a confirmed specification, so it changes site state.",
+                "open_world_justification": "Can create or change a WordPress.com site that may become visible on the internet.",
+                "destructive_justification": "Starts a build workflow and does not directly delete or overwrite an existing selected resource."
+            }
+        },
+        "wpcom-site-builder-start": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": true,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Kicks off an asynchronous AI site build after confirmation, so it changes site-building state.",
+                "open_world_justification": "Can create or change a WordPress.com site build that may become visible on the internet.",
+                "destructive_justification": "Starts a build workflow and does not directly delete or overwrite an existing selected resource."
+            }
+        },
+        "wpcom-site-builder-status": {
+            "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Only checks the progress of an existing AI site build session.",
+                "open_world_justification": "Does not publish content, send messages, or change public internet state.",
+                "destructive_justification": "Does not delete, overwrite, revoke access, or perform irreversible actions."
+            }
+        },
+        "wpcom-mcp-am-i-automattician": {
+            "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Only checks whether the current authenticated user is an Automattician.",
+                "open_world_justification": "Does not publish content, send messages, or change public internet state.",
+                "destructive_justification": "Does not delete, overwrite, revoke access, or perform irreversible actions."
+            }
+        },
+        "wpcom-mcp-feedback-tools": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": true,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Can approve MCP feedback in addition to fetching pending feedback, so it modifies feedback state.",
+                "open_world_justification": "Can change submitted feedback workflow state outside the current chat session.",
+                "destructive_justification": "Does not delete feedback or perform irreversible destructive actions."
+            }
+        },
+        "wpcom-mcp-send-feedback": {
+            "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": true,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Submits feature requests, bug reports, or general feedback, so it creates feedback records.",
+                "open_world_justification": "Sends feedback to the WordPress.com MCP feedback system outside the current chat session.",
+                "destructive_justification": "Does not delete, overwrite, revoke access, or perform irreversible actions."
+            }
+        },
+        "wpcom-mcp-jetpack-search-voice": {
+            "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": true,
+                "destructiveHint": false
+            },
+            "justifications": {
+                "read_only_justification": "Only answers questions using Jetpack Search and voice guidelines without changing the blog.",
+                "open_world_justification": "May query a blog through Jetpack Search rather than only local ChatGPT context.",
+                "destructive_justification": "Does not delete, overwrite, revoke access, or perform irreversible actions."
+            }
+        }
+    },
+    "test_cases": [
+        {
+            "description": "Discover the user's WordPress.com sites before a site-scoped action.",
+            "user_prompt": "Show me the WordPress.com sites I can manage.",
+            "file_attachment_urls": null,
+            "tools_triggered": "wpcom-user-sites",
+            "expected_output": "Returns accessible sites with enough identifying information for the user to choose a site.",
+            "expected_output_url": null
+        },
+        {
+            "description": "Review design context before drafting or editing site content.",
+            "user_prompt": "Before updating my homepage, inspect the active theme styles and available design tokens.",
+            "file_attachment_urls": null,
+            "tools_triggered": "wpcom-mcp-site-editor-context",
+            "expected_output": "Returns active theme and design context that can guide later content or layout edits.",
+            "expected_output_url": null
+        },
+        {
+            "description": "Create or edit site content after site selection and user confirmation for writes.",
+            "user_prompt": "Update the About page on my selected site to mention weekend workshops.",
+            "file_attachment_urls": null,
+            "tools_triggered": "wpcom-mcp-content-authoring",
+            "expected_output": "Inspects or resolves the target content, performs the confirmed update, and summarizes the changed page.",
+            "expected_output_url": null
+        },
+        {
+            "description": "Configure DNS records for a custom domain with safety-sensitive write handling.",
+            "user_prompt": "Add the Google Workspace TXT verification record for example.com.",
+            "file_attachment_urls": null,
+            "tools_triggered": "wpcom-domain-update-dns-records",
+            "expected_output": "Checks the domain context, applies the confirmed DNS change, and reports the record type and domain affected.",
+            "expected_output_url": null
+        },
+        {
+            "description": "Start an AI-assisted site build only after the user confirms the site specification.",
+            "user_prompt": "Build me a WordPress.com site for a neighborhood bakery with a warm homepage, menu, and contact section.",
+            "file_attachment_urls": null,
+            "tools_triggered": "wpcom-mcp-site-builder, wpcom-site-builder-start, wpcom-site-builder-status",
+            "expected_output": "Collects or confirms the build specification, starts the build, and reports progress or completion status.",
+            "expected_output_url": null
+        }
+    ],
+    "negative_test_cases": [
+        {
+            "description": "Do not trigger for unrelated calendar requests.",
+            "user_prompt": "What meetings do I have tomorrow?",
+            "file_attachment_urls": null,
+            "tools_triggered": null,
+            "expected_output": "The app should not be invoked because calendar lookup is outside the supported WordPress.com workflows.",
+            "expected_output_url": null
+        },
+        {
+            "description": "Do not complete commerce or purchase flows in ChatGPT.",
+            "user_prompt": "Buy a new WordPress.com plan and domain for my site.",
+            "file_attachment_urls": null,
+            "tools_triggered": null,
+            "expected_output": "The app should not complete a purchase or checkout flow and should explain that purchases are unsupported in this surface.",
+            "expected_output_url": null
+        },
+        {
+            "description": "Do not trigger for generic WordPress coding help that does not need the user's WordPress.com account.",
+            "user_prompt": "Explain how to write a WordPress shortcode in PHP.",
+            "file_attachment_urls": null,
+            "tools_triggered": null,
+            "expected_output": "The app should not be invoked because the request can be answered without account or site tools.",
+            "expected_output_url": null
+        }
+    ]
+}
