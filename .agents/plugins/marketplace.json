@@ -1,14 +1,14 @@
 {
-  "name": "wordpress-studio",
+  "name": "wordpress-com",
   "interface": {
-    "displayName": "WordPress Studio"
+    "displayName": "WordPress.com"
   },
   "plugins": [
     {
-      "name": "wordpress-studio",
+      "name": "wordpress-com",
       "source": {
         "source": "local",
-        "path": "./plugins/wordpress-studio"
+        "path": "./plugins/wordpress-com"
       },
       "policy": {
         "installation": "AVAILABLE",

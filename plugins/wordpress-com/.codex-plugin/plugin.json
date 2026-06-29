@@ -1,5 +1,5 @@
 {
-  "name": "wordpress-studio",
+  "name": "wordpress-com",
   "version": "0.3.0",
   "description": "Build and manage WordPress sites locally with WordPress Studio or live on WordPress.com.",
   "author": {
@@ -29,7 +29,7 @@
   "apps": "./.app.json",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "WordPress Studio",
+    "displayName": "WordPress.com",
     "shortDescription": "Build local Studio sites or manage live WordPress.com sites",
     "longDescription": "Use WordPress Studio for local WordPress builds, theme and plugin work, block validation, audits, and screenshots, or use the connected WordPress.com app to manage live sites, content, settings, plugins, domains, and site structure through WordPress.com MCP tools.",
     "developerName": "Automattic",
