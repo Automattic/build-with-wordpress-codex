@@ -27,7 +27,6 @@
   ],
   "skills": "./skills/",
   "apps": "./.app.json",
-  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "WordPress.com",
     "shortDescription": "Build local Studio sites or manage live WordPress.com sites",

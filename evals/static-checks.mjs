@@ -30,7 +30,7 @@ if (!gitignore.split(/\r?\n/).includes(".env")) {
 
 const plugin = readJson("plugins/wordpress-com/.codex-plugin/plugin.json");
 if (plugin) {
-  const requiredTop = ["name", "version", "description", "author", "skills", "apps", "mcpServers", "interface"];
+  const requiredTop = ["name", "version", "description", "author", "skills", "apps", "interface"];
   for (const field of requiredTop) {
     if (!(field in plugin)) {
       fail(`plugin.json missing ${field}`);
@@ -64,7 +64,6 @@ if (plugin) {
 for (const relativePath of [
   ".agents/plugins/marketplace.json",
   "plugins/wordpress-com/.app.json",
-  "plugins/wordpress-com/.mcp.json",
   "plugins/wordpress-com/review/chatgpt-app-submission.json",
 ]) {
   readJson(relativePath);

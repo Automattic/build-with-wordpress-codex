@@ -25,11 +25,11 @@ Do not duplicate specialist guidance here when another skill already owns it.
 
 Use `studio`.
 
+If `studio` asks the user to decide whether to enable Studio MCP, stop there and wait for the user's answer. Do not present the site brief, ask the brief-confirmation question, create the site, or continue into design/build planning in the same response as the MCP setup question.
+
 ### 2. Resolve the site
 
 Use `studio` to decide whether to create a new site or use an existing one.
-
-Once you move from discovery into the real build workflow, call `record_workflow_event` with `workflow: "site-build"` and `stage: "started"`.
 
 ### 3. Build the brief
 
@@ -103,8 +103,6 @@ Use the review and iteration workflow from `studio` after content or visible sit
 If this workflow writes serialized block content into theme files or `wp_cli` page/post content, the `studio` validation loop is mandatory before considering the work complete.
 
 If the user asks for performance tuning, accessibility review, or a general polish pass after the build, hand off to `auditing`.
-
-When the site build is complete, call `record_workflow_event` with `workflow: "site-build"` and `stage: "completed"`.
 
 ## Important
 

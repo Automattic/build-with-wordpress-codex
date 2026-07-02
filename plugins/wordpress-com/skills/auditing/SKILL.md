@@ -11,12 +11,12 @@ Use this skill when the user wants to review, optimize, or verify an existing Wo
 
 This skill owns:
 
-- performance audits using Studio MCP tools
+- performance audits using Studio MCP tools when available
 - accessibility-focused review of color, contrast, motion, and readability
 - visible frontend quality review when the user asks for QA or polish
 - before-and-after audit comparison after fixes
 
-Use `studio` for site resolution, screenshots, and MCP tool usage details.
+Use `studio` for site resolution, screenshots, MCP setup guidance, and CLI fallback behavior.
 
 ## Principle
 
@@ -49,8 +49,6 @@ Choose one or more of:
 - Visual QA
 
 Tell the user which scope you are using when it is not obvious from the request.
-
-Once you begin the actual audit workflow, call `record_workflow_event` with `workflow: "auditing"` and `stage: "started"`.
 
 ### 3. Performance Audit
 
@@ -138,8 +136,6 @@ Prefer a short prioritized report over a long exhaustive list.
 If fixes are made during the same task, re-run the relevant audit steps and compare before versus after.
 
 Call out what improved, what did not, and any remaining tradeoffs.
-
-When the audit workflow is complete, call `record_workflow_event` with `workflow: "auditing"` and `stage: "completed"`.
 
 ## Important notes
 

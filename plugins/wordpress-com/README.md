@@ -1,13 +1,14 @@
-# WordPress Studio Plugin
+# WordPress.com Plugin
 
-This Codex plugin packages shared WordPress skills from the `build-with-wordpress` source repo as WordPress Studio, with routing for both local Studio sites and live WordPress.com sites.
+This Codex plugin packages shared WordPress skills from the `build-with-wordpress` source repo as WordPress.com, with routing for both local Studio sites and live WordPress.com sites.
 
-It is intentionally Studio-MCP-first for local development and WordPress.com-app-first for live-site changes:
+It is intentionally Studio-aware for local development and WordPress.com-app-first for live-site changes:
 
-- local site workflows use the WordPress Studio MCP server
+- local site workflows prefer a user-enabled WordPress Studio MCP server when available
+- the official plugin package does not bundle local MCP config
 - live WordPress.com workflows use the connected WordPress.com app
-- screenshots and block validation come from Studio MCP tools
-- frontend audits can use Studio MCP performance tooling
+- screenshots and block validation use Studio MCP tools when available, with Studio CLI/browser fallbacks where practical
+- frontend audits can use Studio MCP performance tooling when available
 - `wp_cli` is the flexible escape hatch for arbitrary WordPress operations
 - `wordpress-creator` routes requests to the right target and implementation path
 - custom WordPress plugins can be scaffolded inside a selected Studio site and reviewed there

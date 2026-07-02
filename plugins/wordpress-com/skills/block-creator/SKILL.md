@@ -32,8 +32,6 @@ Use Studio tools to:
 - start it if needed
 - fetch the site path and URL
 
-Once you begin the actual block implementation workflow, call `record_workflow_event` with `workflow: "block-build"` and `stage: "started"`.
-
 ### 3. Understand the request
 
 If the request is vague, clarify:
@@ -173,7 +171,6 @@ After a successful build:
 - activate the plugin with `wp_cli`
 - insert the block into a test page or post with `wp_cli`
 - follow the review and iteration workflow in `studio`
-- call `record_workflow_event` with `workflow: "block-build"` and `stage: "completed"`
 
 When editing an existing block:
 
