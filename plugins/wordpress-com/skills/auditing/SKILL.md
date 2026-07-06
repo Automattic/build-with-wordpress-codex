@@ -11,12 +11,12 @@ Use this skill when the user wants to review, optimize, or verify an existing Wo
 
 This skill owns:
 
-- performance audits using Studio MCP tools
+- performance audits using Studio MCP tools when available
 - accessibility-focused review of color, contrast, motion, and readability
 - visible frontend quality review when the user asks for QA or polish
 - before-and-after audit comparison after fixes
 
-Use `studio` for site resolution, screenshots, and MCP tool usage details.
+Use `studio` for site resolution, screenshots, MCP setup guidance, and CLI fallback behavior.
 
 ## Principle
 
@@ -50,11 +50,9 @@ Choose one or more of:
 
 Tell the user which scope you are using when it is not obvious from the request.
 
-Once you begin the actual audit workflow, call `record_workflow_event` with `workflow: "auditing"` and `stage: "started"`.
-
 ### 3. Performance Audit
 
-Use `audit_performance` for the requested path.
+Use `need_for_speed` for the requested path.
 
 Interpret at least:
 
@@ -95,7 +93,7 @@ Translate findings into WordPress-specific actions where possible, such as:
 
 ### 4. Accessibility Review
 
-Use screenshots plus theme or plugin code inspection as needed.
+Use `take_screenshot` plus theme or plugin code inspection as needed.
 
 Focus on issues this repo can realistically help with:
 
@@ -106,13 +104,13 @@ Focus on issues this repo can realistically help with:
 - readability issues caused by font size, line height, or dense layouts
 - color choices that make important information hard to distinguish
 
-When the issue is visual, prefer screenshot-backed observations.
+When the issue is visual, prefer `take_screenshot`-backed observations. Use `inspect_design` when the rendered DOM or computed styles would identify the root cause faster than code inspection.
 
 When the issue appears structural, inspect the relevant theme or plugin files before recommending a fix.
 
 ### 5. Visual QA
 
-When the user wants a broader quality pass, use screenshots to check:
+When the user wants a broader quality pass, use `take_screenshot` to check:
 
 - spacing and alignment
 - responsive layout issues
@@ -139,10 +137,8 @@ If fixes are made during the same task, re-run the relevant audit steps and comp
 
 Call out what improved, what did not, and any remaining tradeoffs.
 
-When the audit workflow is complete, call `record_workflow_event` with `workflow: "auditing"` and `stage: "completed"`.
-
 ## Important notes
 
-- `audit_performance` results are synthetic measurements from a local Studio environment. Use them primarily for diagnosis and before-versus-after comparison, not as production truth.
+- `need_for_speed` results are synthetic measurements from a local Studio environment. Use them primarily for diagnosis and before-versus-after comparison, not as production truth.
 - Accessibility observations in this workflow are often based on visual review and code inspection rather than a dedicated automated accessibility scanner.
 - When performance, accessibility, and design issues conflict, explain the tradeoff instead of over-optimizing one dimension silently.

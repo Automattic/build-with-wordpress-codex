@@ -1,0 +1,51 @@
+{
+  "name": "wordpress-com",
+  "version": "0.3.0",
+  "description": "Build and manage WordPress sites locally with WordPress Studio or live on WordPress.com.",
+  "author": {
+    "name": "Automattic"
+  },
+  "homepage": "https://developer.wordpress.com/",
+  "repository": "https://github.com/Automattic/build-with-wordpress-codex",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress",
+    "wordpress.com",
+    "wpcom",
+    "studio",
+    "wp-cli",
+    "auditing",
+    "wordpress-creator",
+    "design-previews-creator",
+    "block-theme",
+    "site-creator",
+    "theme-creator",
+    "block-creator",
+    "plugin-creator",
+    "gutenberg",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "apps": "./.app.json",
+  "interface": {
+    "displayName": "WordPress.com",
+    "shortDescription": "Build local Studio sites or manage live WordPress.com sites",
+    "longDescription": "Use WordPress Studio for local WordPress builds, theme and plugin work, block validation, audits, and screenshots, or use the connected WordPress.com app to manage live sites, content, settings, plugins, domains, and site structure through WordPress.com MCP tools.",
+    "developerName": "Automattic",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://developer.wordpress.com/",
+    "brandColor": "#3858E9",
+    "composerIcon": "./assets/wordpress-dotcom.png",
+    "logo": "./assets/wordpress-dotcom.png",
+    "defaultPrompt": [
+      "Help me choose local Studio or live WordPress.com for this task.",
+      "Build a local WordPress Studio site from this brief.",
+      "Update content on my live WordPress.com site."
+    ]
+  }
+}

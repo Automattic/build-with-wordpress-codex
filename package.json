@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "eval:static": "node evals/static-checks.mjs",
+    "eval:dry-run": "node evals/run-local.mjs --dry-run",
+    "eval:local": "node evals/run-local.mjs"
+  }
+}

@@ -1,14 +1,14 @@
 {
-  "name": "build-with-wordpress",
+  "name": "wordpress-com",
   "interface": {
-    "displayName": "Build with WordPress"
+    "displayName": "WordPress.com"
   },
   "plugins": [
     {
-      "name": "build-with-wordpress",
+      "name": "wordpress-com",
       "source": {
         "source": "local",
-        "path": "./plugins/build-with-wordpress"
+        "path": "./plugins/wordpress-com"
       },
       "policy": {
         "installation": "AVAILABLE",
